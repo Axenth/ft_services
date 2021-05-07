@@ -1,0 +1,10 @@
+apiVersion: 1
+datasources:
+- name: influxdb
+  type: influxdb
+  access: proxy
+  database: telegraf
+  isDefault: true
+  user: user
+  password: pass
+  url: http://influxdb-service:8086
