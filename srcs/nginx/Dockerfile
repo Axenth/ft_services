@@ -22,7 +22,6 @@ COPY ./src/supervisord.conf /etc/supervisord.conf
 RUN adduser -D user
 RUN echo "user:password"|chpasswd
 
-RUN ssh-keygen -A
 RUN yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/C=EN/ST=75/L=Amsterdam/O=42/CN=jlensing' -keyout /etc/ssl/certs/localhost.key -out /etc/ssl/certs/localhost.crt -addext "extendedKeyUsage = serverAuth"
 
 COPY ./src/index.html /var/lib/nginx/html/index.html
