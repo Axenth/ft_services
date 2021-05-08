@@ -3,7 +3,7 @@ minikube delete
 
 echo "Start Kubernetes with Minikube.."
 minikube start --driver=virtualbox \
-                --cpus=2 --memory=2048 --disk-size=4g \
+                --cpus=2 --memory=4096 --disk-size=4g \
                 --addons metallb --addons dashboard --addons metrics-server --extra-config=kubelet.authentication-token-webhook=true
 
 echo "Enable metrics server"
@@ -34,7 +34,7 @@ docker build -t nginx:ft_services ./srcs/nginx/. > /dev/null
 echo -ne 'Building: FTPS (1/8 done)      \r'
 docker build -t ftps:ft_services ./srcs/FTPS/. > /dev/null
 
-echo -ne 'Building: Mysql (2/8 done)     \r'
+echo -ne 'Building: mySQL (2/8 done)     \r'
 docker build -t mysql:ft_services ./srcs/mysql/. > /dev/null
 
 echo -ne 'Building: Wordpress (3/8 done) \r'
@@ -68,7 +68,7 @@ kubectl apply -f ./srcs/nginx/nginx.yml > /dev/null
 echo -ne 'Creating: FTPS (1/8 done)       \r'
 kubectl apply -f ./srcs/FTPS/ftps.yml > /dev/null
 
-echo -ne 'Creating: MYSQL (2/8 done)      \r'
+echo -ne 'Creating: mySQL (2/8 done)      \r'
 kubectl apply -f ./srcs/mysql/mysql.yml > /dev/null
 
 echo -ne 'Creating: Wordpress (3/8 done)  \r'
